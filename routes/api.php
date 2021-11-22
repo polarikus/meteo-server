@@ -18,8 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('test', function (){
-    return response()->json([
-        'result' => 0
-    ]);
+Route::post('test', function (Request $request){
+    return response()->json($request->all());
 });
