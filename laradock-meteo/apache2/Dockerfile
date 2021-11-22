@@ -31,6 +31,3 @@ CMD ["/bin/bash", "/opt/startup.sh"]
 
 EXPOSE 80 443
 
-RUN wget -O "/usr/local/bin/go-replace" "https://github.com/webdevops/goreplace/releases/download/1.1.2/gr-arm64-linux"
-RUN chmod +x "/usr/local/bin/go-replace"
-RUN "/usr/local/bin/go-replace" --version
