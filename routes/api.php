@@ -19,8 +19,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('test', function (Request $request){
+    log('info', [
+        'serial_number' => $request->header('X-serial-number'),
+        'sensor_data' => $request->all()
+    ]);
     return response()->json([
         "sensor_data" => $request->all(),
-        "serial_number" => $request->header('X-device-id')
+        "serial_number" => $request->header('X-serial-number')
     ]);
 });
