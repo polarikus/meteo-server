@@ -19,5 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('test', function (Request $request){
-    return response()->json($request->all());
+    return response()->json([
+        "sensor_data" => $request->all(),
+        "headers" => $request->headers
+    ]);
 });
