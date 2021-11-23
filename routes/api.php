@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('test', function (Request $request){
-    log('info', [
+    \Illuminate\Support\Facades\Log::debug('sensor_event', [
         'serial_number' => $request->header('X-serial-number'),
         'sensor_data' => $request->all()
     ]);
