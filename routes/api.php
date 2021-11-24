@@ -18,11 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('test', function (Request $request){
-    \Illuminate\Support\Facades\Log::debug('sensor_event', [
-        'serial_number' => $request->header('X-serial-number'),
-        'sensor_data' => $request->all()
-    ]);
+Route::middleware('auth:sanctum')->post('test', function (Request $request){
     return response()->json([
         "sensor_data" => $request->all(),
         "serial_number" => $request->header('X-serial-number')
