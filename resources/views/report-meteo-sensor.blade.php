@@ -19,7 +19,7 @@
             }).done(function(data) {
                 let time = Date.now();
                 let lastOnline = data.last_online.last_online;
-                lastOnline = new Date(data.last_online.last_online) + new Date().getTimezoneOffset()/60;
+                lastOnline = new Date(data.last_online.last_online + 'Z');
                 //console.log(data);
                 $('.card-temperature-last').text(data.last_meteo_data[0].temperature);
                 $('.card-humidity-last').text(data.last_meteo_data[0].humidity + '%');
