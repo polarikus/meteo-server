@@ -55,7 +55,7 @@ class Device extends Model
         if (!$this->hasOne(SensorLastOnline::class)->count()) {
             return (bool)$this->hasOne(SensorLastOnline::class)
                 ->create([
-                    'last_online' => Carbon::now()
+                    'last_online' => Carbon::now()->timestamp
                 ]);
         }
 
