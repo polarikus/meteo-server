@@ -21,7 +21,9 @@
                 let time = Date.now();
                 let lastOnline = data.last_online.last_online;
                 lastOnline = moment(data.last_meteo_data[0].created_at);
-                console.log(time - new Date(data.last_online.last_online));
+                console.log(time - new Date(lastOnline));
+                console.log(time)
+                console.log(lastOnline)
                 $('.card-temperature-last').text(data.last_meteo_data[0].temperature);
                 $('.card-humidity-last').text(data.last_meteo_data[0].humidity + '%');
                 $('.badge-model').text(data.chip + ' rev.' + data.rev);
