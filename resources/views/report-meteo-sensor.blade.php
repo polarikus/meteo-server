@@ -18,7 +18,7 @@
             $.ajax({
                 url: '/api/reports/meteo/sensor-desc/' + serial_number
             }).done(function(data) {
-                let time = Date.now();
+                let time = moment();
                 let lastOnline = moment(data.last_online.last_online);
                 lastOnline = moment(data.last_meteo_data[0].created_at);
                 console.log('Разница: ' + time - lastOnline);
