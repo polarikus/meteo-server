@@ -12,7 +12,7 @@ class ReportsController extends Controller
     {
         $device = Device::where('serial_number', '=', $serialNumber);
         if ($device->count() === 0){
-            return view('welcome', ['err' => 'Девайс не найден']);
+            return view('welcome', ['err' => 'Девайс не найден', 'sn' => $serialNumber]);
         }
         return view('report-meteo-sensor', ['serial_number' => $serialNumber]);
     }
