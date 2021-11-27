@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/sensor/{serialNumber}/meteo-data', [ReportsController::class, 'meteoSensor']);
+Route::get('/sensor/{serialNumber}/meteo-data', [ReportsController::class, 'meteoSensor'])
+    ->name('meteo-dashboard');

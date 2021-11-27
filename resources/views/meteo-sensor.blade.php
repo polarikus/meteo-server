@@ -7,7 +7,7 @@
         <span class="badge badge-pill badge-secondary badge-model"></span>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">Температура: <span class="card-temperature-last"></span></li>
+        <li class="list-group-item">Температура: <span class="card-temperature-last"></span>С&#xb0;</li>
         <li class="list-group-item">Влажность: <span class="card-humidity-last"></span></li>
     </ul>
     <div class="card-footer text-muted">
