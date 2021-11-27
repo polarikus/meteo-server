@@ -18,7 +18,7 @@ class SensorController extends Controller
         $result = $sensor->first()->toArray();
         $result['last_online'] = $last_online;
 
-        return response()->json($sensor);
+        return response()->json($result);
     }
 
     public function putMeteoData(SensorDataRequest $request)
