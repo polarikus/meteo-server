@@ -77,9 +77,10 @@
                 let time = moment();
                 let lastOnline = moment(data.last_online);
                 online = moment.duration(time.diff(lastOnline));
-                console.log('Разница: ' + online / 1000);
-                console.log('Сейчас: ' + time);
-                console.log('Был: ' + lastOnline);
+                console.log('Сейчас h: ' + data.last_meteo_data.humidity);
+                console.log('Был h: ' + last_humidity);
+                console.log('Сейчас t: ' + data.last_meteo_data.temperature);
+                console.log('Был: t' + last_temperature);
                 if (last_humidity != data.last_meteo_data.humidity || last_temperature != data.last_meteo_data.temperature){
                     getGraphData();
                 }
