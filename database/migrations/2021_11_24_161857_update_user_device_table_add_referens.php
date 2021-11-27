@@ -13,7 +13,7 @@ class UpdateUserDeviceTableAddReferens extends Migration
      */
     public function up()
     {
-        Schema::table('user_device', function (Blueprint $table) {
+        Schema::table('device_user', function (Blueprint $table) {
 
             $table->foreign('device_id')->references('id')->on('devices');
             $table->foreign('user_id')->references('id')->on('users');
@@ -28,7 +28,7 @@ class UpdateUserDeviceTableAddReferens extends Migration
      */
     public function down()
     {
-        Schema::table('user_device', function (Blueprint $table) {
+        Schema::table('device_user', function (Blueprint $table) {
 
             $table->dropForeign(['device_id']);
             $table->dropForeign(['user_id']);

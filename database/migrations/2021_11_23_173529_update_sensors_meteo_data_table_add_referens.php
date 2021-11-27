@@ -13,7 +13,7 @@ class UpdateSensorsMeteoDataTableAddReferens extends Migration
      */
     public function up()
     {
-        Schema::table('sensors_meteo_errors', function (Blueprint $table) {
+        Schema::table('sensors_meteo_data', function (Blueprint $table) {
 
             $table->foreign('device_id')->references('id')->on('devices');
 
@@ -27,7 +27,7 @@ class UpdateSensorsMeteoDataTableAddReferens extends Migration
      */
     public function down()
     {
-        Schema::table('sensors_meteo_errors', function (Blueprint $table) {
+        Schema::table('sensors_meteo_data', function (Blueprint $table) {
 
             $table->dropForeign(['device_id']);
 

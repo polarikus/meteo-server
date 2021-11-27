@@ -16,7 +16,7 @@ class CreateSensorsLastOnlineTable extends Migration
         Schema::create('sensors_last_online', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('device_id');
-            $table->timestamp('last_online');
+            $table->timestampTz('last_online');
         });
     }
 

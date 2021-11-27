@@ -33,6 +33,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $touches = ['devices'];
+
     /**
      * The attributes that should be cast.
      *
@@ -41,4 +43,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function devices()
+    {
+        return $this->belongsToMany(Device::class);
+    }
+
+    public function hasDevice(string $serialNumber): bool
+    {
+        return (bool)$this->devices->where('serial_number', '=', $serialNumber)->count();
+    }
+
+    public function findDevice($serialNumber)
+    {
+        return $this->belongsToMany(Device::class)
+            ->where('serial_number', $serialNumber)
+            ->first();
+    }
 }

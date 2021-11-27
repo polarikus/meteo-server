@@ -13,11 +13,10 @@ class CreateUserDeviceTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_device', function (Blueprint $table) {
+        Schema::create('device_user', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('device_id');
-            $table->timestamps();
         });
     }
 
@@ -28,6 +27,6 @@ class CreateUserDeviceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_device');
+        Schema::dropIfExists('device_user');
     }
 }
