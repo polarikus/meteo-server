@@ -21,7 +21,7 @@
                 let time = moment();
                 let lastOnline = moment(data.last_online.last_online);
                 lastOnline = moment(data.last_meteo_data[0].created_at);
-                let duration = moment.duration(end.diff(startTime));
+                let duration = moment.duration(lastOnline.diff(startTime));
                 console.log('Разница: ' + duration);
                 console.log('Сейчас: ' + time);
                 console.log('Был: ' + lastOnline);
