@@ -80,12 +80,11 @@
                 console.log('Разница: ' + online / 1000);
                 console.log('Сейчас: ' + time);
                 console.log('Был: ' + lastOnline);
-                if (last_humidity !== data.last_meteo_data.humidity){
+                if (last_humidity != data.last_meteo_data.humidity || last_temperature != data.last_meteo_data.temperature){
                     getGraphData();
                 }
-                if (last_temperature !== data.last_meteo_data.temperature){
-                    getGraphData();
-                }
+                last_temperature = data.last_meteo_data.humidity;
+                last_humidity = data.last_meteo_data.temperature;
                 $('.card-temperature-last').text(data.last_meteo_data.temperature);
                 $('.card-humidity-last').text(data.last_meteo_data.humidity + '%');
                 $('.badge-model').text(data.chip + ' rev.' + data.rev);
