@@ -1,5 +1,5 @@
 <div class="card mt-5">
-    <span class="card-header">
+    <div class="card-header">
         <p class="small card-text">SN: <span id="serial_number">{{$serial_number}}</span></p>
     </div>
     <div class="card-body">
