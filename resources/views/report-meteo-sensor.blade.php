@@ -34,7 +34,7 @@
                 $('.last-online').text(lastOnline.fromNow());
                 console.log((online + Dscdelay) > 60000);
                 console.log(online + Dscdelay);
-                if ((online + Dscdelay) > 60000){
+                if ((online + Dscdelay) < 60000){
                     $('.badge-online').text('Online');
                     $('.badge-online').removeClass('badge-danger');
                     $('.badge-online').addClass('badge-success');
