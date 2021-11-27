@@ -41,7 +41,7 @@
 
         function getGraphData(){
             $.ajax({
-                url: '/api/reports/meteo/sensor-stat/00' + serial_number + '/hour'
+                url: '/api/reports/meteo/sensor-stat/' + serial_number + '/hour'
             }).done(function(data) {
                 console.log(data);
                 $("#chart").shieldChart({
