@@ -61,7 +61,7 @@ class Device extends Model
 
          if ($this->hasOne(SensorLastOnline::class)
             ->update([
-                'last_online' => Carbon::now()
+                'last_online' => Carbon::now()->timestamp
             ])){
              return true;
          }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SensorDataRequest;
 use App\Models\Device;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,7 +13,9 @@ class SensorController extends Controller
     public function getSesorDesc($serialNumber)
     {
         $sensor = Device::where('serial_number', '=', $serialNumber);
-        $sensor = $sensor->first()->loadMissing('last_online', 'last_meteo_data');
+        $last_online = $sensor->first()->loadMissing('last_online', 'last_meteo_data');
+        $last_online = Carbon::create($last_online)->timestamp;
+        $sensor->last_online = $last_online;
 
         return response()->json($sensor);
     }
