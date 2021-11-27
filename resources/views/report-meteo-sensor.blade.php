@@ -21,7 +21,8 @@
                 let time = moment();
                 let lastOnline = moment(data.last_online.last_online);
                 lastOnline = moment(data.last_meteo_data[0].created_at);
-                console.log('Разница: ' + Number(time) - Number(lastOnline));
+                let duration = moment.duration(end.diff(startTime));
+                console.log('Разница: ' + duration);
                 console.log('Сейчас: ' + time);
                 console.log('Был: ' + lastOnline);
                 $('.card-temperature-last').text(data.last_meteo_data[0].temperature);
