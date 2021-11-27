@@ -12,9 +12,10 @@
             <div/>
     </div>
     <script>
+        let serial_number = $('#serial_number').text();
         function getSensorDesc(){
             $.ajax({
-                url: '/api/reports/meteo/sensor-desc/00' + {{$serial_number}}
+                url: '/api/reports/meteo/sensor-desc/' + serial_number
             }).done(function(data) {
                 let time = Date.now();
                 let lastOnline = data.last_online.last_online;
@@ -40,7 +41,7 @@
 
         function getGraphData(){
             $.ajax({
-                url: '/api/reports/meteo/sensor-stat/00' + {{$serial_number}} + '/hour'
+                url: '/api/reports/meteo/sensor-stat/00' + serial_number + '/hour'
             }).done(function(data) {
                 console.log(data);
                 $("#chart").shieldChart({

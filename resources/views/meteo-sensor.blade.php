@@ -1,6 +1,6 @@
 <div class="card mt-5">
     <div class="card-header">
-        SN: {{$serial_number}}
+        SN: <div id="serial_number">{{$serial_number}}</div>>
     </div>
     <div class="card-body">
         <span class="badge badge-pill badge-success">Online</span>
