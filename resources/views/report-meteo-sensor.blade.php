@@ -12,6 +12,7 @@
             <div/>
     </div>
     <script>
+        Date.timezoneOffset(new Date().getTimezoneOffset()/60);
         let serial_number = $('#serial_number').text();
         function getSensorDesc(){
             $.ajax({
