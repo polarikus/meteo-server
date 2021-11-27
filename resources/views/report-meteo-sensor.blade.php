@@ -20,7 +20,7 @@
             }).done(function(data) {
                 let time = Date.now();
                 let lastOnline = data.last_online.last_online;
-                lastOnline = new Date(data.last_online.last_online);
+                lastOnline = new Date(data.last_online.last_online).getTimezoneOffset(new Date().getTimezoneOffset()/60);
                 //console.log(data);
                 $('.card-temperature-last').text(data.last_meteo_data[0].temperature);
                 $('.card-humidity-last').text(data.last_meteo_data[0].humidity + '%');
