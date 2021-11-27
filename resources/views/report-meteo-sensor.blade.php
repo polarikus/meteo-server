@@ -23,7 +23,6 @@
             }).done(function (data) {
                 let time = moment();
                 let lastOnline = moment(data.last_online.last_online);
-                lastOnline = moment(data.last_meteo_data[0].created_at);
                 online = moment.duration(time.diff(lastOnline));
                 console.log('Разница: ' + online / 1000);
                 console.log('Сейчас: ' + time);
