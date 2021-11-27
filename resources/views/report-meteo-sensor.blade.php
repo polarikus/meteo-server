@@ -19,11 +19,11 @@
                 url: '/api/reports/meteo/sensor-desc/' + serial_number
             }).done(function(data) {
                 let time = Date.now();
-                let lastOnline = data.last_online.last_online;
+                let lastOnline = moment(data.last_online.last_online);
                 lastOnline = moment(data.last_meteo_data[0].created_at);
-                console.log(time - new Date(lastOnline));
-                console.log(time)
-                console.log(lastOnline)
+                console.log('Разница: ' + time - lastOnline);
+                console.log('Сейчас: ' + time);
+                console.log('Был: ' + lastOnline);
                 $('.card-temperature-last').text(data.last_meteo_data[0].temperature);
                 $('.card-humidity-last').text(data.last_meteo_data[0].humidity + '%');
                 $('.badge-model').text(data.chip + ' rev.' + data.rev);
