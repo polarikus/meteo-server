@@ -20,12 +20,12 @@
             }).done(function(data) {
                 let time = Date.now();
                 let lastOnline = data.last_online.last_online;
-                lastOnline = new Date(moment(data.last_online.last_online).tz(Intl.DateTimeFormat().resolvedOptions().timeZone));
+                lastOnline = moment(data.last_online.last_online).tz(Intl.DateTimeFormat().resolvedOptions().timeZone);
                 //console.log(data);
                 $('.card-temperature-last').text(data.last_meteo_data[0].temperature);
                 $('.card-humidity-last').text(data.last_meteo_data[0].humidity + '%');
                 $('.badge-model').text(data.chip + ' rev.' + data.rev);
-                $('.last-online').text(lastOnline.toUTCString());
+                $('.last-online').text(lastOnline.fromNow());
                 return true;
             }).fail(function (err) {
                 return false
