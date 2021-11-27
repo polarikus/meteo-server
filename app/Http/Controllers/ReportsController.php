@@ -10,6 +10,10 @@ class ReportsController extends Controller
 {
     public function meteoSensor($serialNumber)
     {
+        $device = Device::where('serial_number', '=', $serialNumber);
+        if ($device->count() === 0){
+            return response('', 404);
+        }
         return view('report-meteo-sensor', ['serial_number' => $serialNumber]);
     }
 
