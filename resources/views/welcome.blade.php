@@ -1,8 +1,5 @@
 <?php
-//213213123
-$user = \App\Models\User::find(2);
 
-dd($user->findDevice('4242455343')->update_online());
 
 
 ?>
