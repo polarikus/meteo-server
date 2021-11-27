@@ -12,7 +12,6 @@
             <div/>
     </div>
     <script>
-        Date.timezoneOffset(new Date().getTimezoneOffset()/60);
         let serial_number = $('#serial_number').text();
         function getSensorDesc(){
             $.ajax({
@@ -20,7 +19,7 @@
             }).done(function(data) {
                 let time = Date.now();
                 let lastOnline = data.last_online.last_online;
-                lastOnline = new Date(data.last_online.last_online).getTimezoneOffset(new Date().getTimezoneOffset()/60);
+                lastOnline = new Date(data.last_online.last_online).TimezoneOffset(new Date().getTimezoneOffset()/60);
                 //console.log(data);
                 $('.card-temperature-last').text(data.last_meteo_data[0].temperature);
                 $('.card-humidity-last').text(data.last_meteo_data[0].humidity + '%');
