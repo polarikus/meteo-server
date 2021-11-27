@@ -14,7 +14,7 @@ class SensorController extends Controller
     {
         $sensor = Device::where('serial_number', '=', $serialNumber);
         $sensor->first()->loadMissing('last_online', 'last_meteo_data');
-        $last_online = Carbon::create($sensor->first()->last_online->first()->last_online)->timestamp;
+        $last_online = Carbon::create($sensor->first()->last_online->first()->last_online)->toISOString();
         dd($last_online);
         $sensor->last_online = $last_online;
 
