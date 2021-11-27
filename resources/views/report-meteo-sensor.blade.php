@@ -43,7 +43,7 @@
            }
             timerId = setTimeout(request, Dscdelay);
         }, Dscdelay);
-        if ((online + Dscdelay) < 60000){
+        if ((online + Dscdelay) > 60000){
             $('.badge-online').text('Online');
             $('.badge-online').removeClass('badge-danger');
             $('.badge-online').addClass('badge-success');
