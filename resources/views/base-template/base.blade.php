@@ -15,7 +15,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://bootstraptema.ru/plugins/2016/shieldui/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone.min.js" integrity="sha512-qgYAx88WhogYFeIK6/7VKi5OjuYN7i0Q0vWR5jsU2v/dEGbo60LeHEgggXdivq8YRX7y3SDP9OpUqWu8fEyGsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-utils.js" integrity="sha512-iI9i65smxuQifs0mHfRwD8p6FRKvJ7S2DOLbSxl2onEyHHR5EFob767idfcxomRBJkiU0QWeiBA/qyLDBKKvAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <body>
 <header class="mb-2">
     @include('base-template.header')
