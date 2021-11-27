@@ -3,7 +3,7 @@
         <p class="small card-text">SN: <span id="serial_number">{{$serial_number}}</span></p>
     </div>
     <div class="card-body">
-        <span class="badge badge-pill badge-success">Online</span>
+        <span class="badge badge-pill badge-online">Online</span>
         <span class="badge badge-pill badge-secondary badge-model"></span>
     </div>
     <ul class="list-group list-group-flush">

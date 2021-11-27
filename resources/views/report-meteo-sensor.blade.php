@@ -14,6 +14,7 @@
     <script>
 
         let serial_number = $('#serial_number').text();
+        let online;
         function getSensorDesc(){
             $.ajax({
                 url: '/api/reports/meteo/sensor-desc/' + serial_number
@@ -21,8 +22,8 @@
                 let time = moment();
                 let lastOnline = moment(data.last_online.last_online);
                 lastOnline = moment(data.last_meteo_data[0].created_at);
-                let duration = moment.duration(time.diff(lastOnline));
-                console.log('Разница: ' + duration / 1000);
+                online = moment.duration(time.diff(lastOnline));
+                console.log('Разница: ' + online / 1000);
                 console.log('Сейчас: ' + time);
                 console.log('Был: ' + lastOnline);
                 $('.card-temperature-last').text(data.last_meteo_data[0].temperature);
@@ -42,6 +43,15 @@
            }
             timerId = setTimeout(request, Dscdelay);
         }, Dscdelay);
+        if ((online + Dscdelay) < 60000){
+            $('.badge-online').text('Online');
+            $('.badge-online').removeClass('badge-danger');
+            $('.badge-online').addClass('badge-success');
+        }else {
+            $('.badge-online').text('Offline');
+            $('.badge-online').addClass('badge-danger');
+            $('.badge-online').removeClass('badge-success');
+        }
 
         function getGraphData(){
             $.ajax({
