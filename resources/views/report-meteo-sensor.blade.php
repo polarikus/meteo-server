@@ -22,7 +22,7 @@
                 url: '/api/reports/meteo/sensor-desc/' + serial_number
             }).done(function (data) {
                 let time = moment();
-                let lastOnline = moment(data.last_online.last_online);
+                let lastOnline = moment(data.last_online);
                 online = moment.duration(time.diff(lastOnline));
                 console.log('Разница: ' + online / 1000);
                 console.log('Сейчас: ' + time);
