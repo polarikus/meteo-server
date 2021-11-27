@@ -1,6 +1,6 @@
 @extends('base-template.base')
 @section('title')
-    Меиеостатистика
+    Онлайн монитор
 @endsection
 @section('content')
     <div class="row">
