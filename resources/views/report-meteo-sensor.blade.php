@@ -15,10 +15,12 @@
 
         let serial_number = $('#serial_number').text();
         let online;
-        function getSensorDesc(){
+        let Dscdelay = 5000;
+        var Gdelay = 100000;
+        function getSensorDesc() {
             $.ajax({
                 url: '/api/reports/meteo/sensor-desc/' + serial_number
-            }).done(function(data) {
+            }).done(function (data) {
                 let time = moment();
                 let lastOnline = moment(data.last_online.last_online);
                 lastOnline = moment(data.last_meteo_data[0].created_at);
@@ -30,12 +32,22 @@
                 $('.card-humidity-last').text(data.last_meteo_data[0].humidity + '%');
                 $('.badge-model').text(data.chip + ' rev.' + data.rev);
                 $('.last-online').text(lastOnline.fromNow());
+                console.log((online + Dscdelay) > 60000);
+                console.log(online + Dscdelay);
+                if ((online + Dscdelay) > 60000){
+                    $('.badge-online').text('Online');
+                    $('.badge-online').removeClass('badge-danger');
+                    $('.badge-online').addClass('badge-success');
+                }else {
+                    $('.badge-online').text('Offline');
+                    $('.badge-online').addClass('badge-danger');
+                    $('.badge-online').removeClass('badge-success');
+                }
                 return true;
             }).fail(function (err) {
                 return false
             });
-        }
-        let Dscdelay = 5000;
+        };
         getSensorDesc();
         let timerId = setTimeout(function request() {
            if (getSensorDesc() === false){
@@ -43,17 +55,6 @@
            }
             timerId = setTimeout(request, Dscdelay);
         }, Dscdelay);
-        console.log((online + Dscdelay) > 60000);
-        console.log(online + Dscdelay);
-        if ((online + Dscdelay) > 60000){
-            $('.badge-online').text('Online');
-            $('.badge-online').removeClass('badge-danger');
-            $('.badge-online').addClass('badge-success');
-        }else {
-            $('.badge-online').text('Offline');
-            $('.badge-online').addClass('badge-danger');
-            $('.badge-online').removeClass('badge-success');
-        }
 
         function getGraphData(){
             $.ajax({
@@ -107,7 +108,6 @@
         }
 
         getGraphData();
-        var Gdelay = 100000;
 
         let timerGraph = setTimeout(function request() {
             if (getGraphData() === false){
