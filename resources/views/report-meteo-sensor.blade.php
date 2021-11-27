@@ -17,42 +17,8 @@
         let online;
         let Dscdelay = 5000;
         var Gdelay = 100000;
-        function getSensorDesc() {
-            $.ajax({
-                url: '/api/reports/meteo/sensor-desc/' + serial_number
-            }).done(function (data) {
-                let time = moment();
-                let lastOnline = moment(data.last_online);
-                online = moment.duration(time.diff(lastOnline));
-                console.log('Разница: ' + online / 1000);
-                console.log('Сейчас: ' + time);
-                console.log('Был: ' + lastOnline);
-                $('.card-temperature-last').text(data.last_meteo_data.temperature);
-                $('.card-humidity-last').text(data.last_meteo_data.humidity + '%');
-                $('.badge-model').text(data.chip + ' rev.' + data.rev);
-                $('.last-online').text(lastOnline.fromNow());
-                if ( online < 60000){
-                    $('.badge-online').text('Online');
-                    $('.badge-online').removeClass('badge-danger');
-                    $('.badge-online').addClass('badge-success');
-                }else {
-                    $('.badge-online').text('Offline');
-                    $('.badge-online').addClass('badge-danger');
-                    $('.badge-online').removeClass('badge-success');
-                }
-                return true;
-            }).fail(function (err) {
-                return false
-            });
-        };
-        getSensorDesc();
-        let timerId = setTimeout(function request() {
-           if (getSensorDesc() === false){
-               Dscdelay *= 2;
-           }
-            timerId = setTimeout(request, Dscdelay);
-        }, Dscdelay);
-
+        var last_temperature = 0;
+        var last_humidity = 0;
         function getGraphData(){
             $.ajax({
                 url: '/api/reports/meteo/sensor-stat/' + serial_number + '/hour'
@@ -103,6 +69,49 @@
                 return false;
             });
         }
+
+        function getSensorDesc() {
+            $.ajax({
+                url: '/api/reports/meteo/sensor-desc/' + serial_number
+            }).done(function (data) {
+                let time = moment();
+                let lastOnline = moment(data.last_online);
+                online = moment.duration(time.diff(lastOnline));
+                console.log('Разница: ' + online / 1000);
+                console.log('Сейчас: ' + time);
+                console.log('Был: ' + lastOnline);
+                if (last_humidity !== data.last_meteo_data.humidity){
+                    getGraphData();
+                }
+                if (last_temperature !== data.last_meteo_data.temperature){
+                    getGraphData();
+                }
+                $('.card-temperature-last').text(data.last_meteo_data.temperature);
+                $('.card-humidity-last').text(data.last_meteo_data.humidity + '%');
+                $('.badge-model').text(data.chip + ' rev.' + data.rev);
+                $('.last-online').text(lastOnline.fromNow());
+                if ( online < 60000){
+                    $('.badge-online').text('Online');
+                    $('.badge-online').removeClass('badge-danger');
+                    $('.badge-online').addClass('badge-success');
+                }else {
+                    $('.badge-online').text('Offline');
+                    $('.badge-online').addClass('badge-danger');
+                    $('.badge-online').removeClass('badge-success');
+                }
+                return true;
+            }).fail(function (err) {
+                return false
+            });
+        };
+        getSensorDesc();
+        let timerId = setTimeout(function request() {
+           if (getSensorDesc() === false){
+               Dscdelay *= 2;
+           }
+            timerId = setTimeout(request, Dscdelay);
+        }, Dscdelay);
+
 
         getGraphData();
 
