@@ -27,8 +27,8 @@
                 console.log('Разница: ' + online / 1000);
                 console.log('Сейчас: ' + time);
                 console.log('Был: ' + lastOnline);
-                $('.card-temperature-last').text(data.last_meteo_data[0].temperature);
-                $('.card-humidity-last').text(data.last_meteo_data[0].humidity + '%');
+                $('.card-temperature-last').text(data.last_meteo_data.temperature);
+                $('.card-humidity-last').text(data.last_meteo_data.humidity + '%');
                 $('.badge-model').text(data.chip + ' rev.' + data.rev);
                 $('.last-online').text(lastOnline.fromNow());
                 if ( online < 60000){
