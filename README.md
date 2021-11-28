@@ -2,4 +2,4 @@
 Docker образы Laradock:
 mysql, php-fpm, apache2, workspace
 
-Прошивка для ESP32: 
+Прошивка для ESP32: https://github.com/polarikus/MyMetioStation
