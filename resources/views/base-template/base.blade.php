@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-    <link type="text/css" rel="StyleSheet" href="resources/css/style.css" />
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link type="text/css" rel="StyleSheet" href="public/css/style.css" />
     <title>@yield('title')</title>
 </head>
-<script src="resources/js/jquery-3.6.0.js"></script>
-<script src="resources/js/popper.min.js"></script>
-<script src="resources/js/bootstrap.min.js"></script>
-<script src="resources/js/script.js"></script>
-<script src="resources/js/moment-with-locales.min.js"></script>
-<script src="resources/js/moment-timezone-with-data.js"></script>
+<script src="public/js/jquery-3.6.0.js"></script>
+<script src="public/js/popper.min.js"></script>
+<script src="public/js/bootstrap.min.js"></script>
+<script src="public/js/script.js"></script>
+<script src="public/js/moment-with-locales.min.js"></script>
+<script src="public/js/moment-timezone-with-data.js"></script>
 <body>
 <header class="mb-2">
     @include('base-template.header')
