@@ -23,7 +23,6 @@
             $.ajax({
                 url: '/api/reports/meteo/sensor-stat/' + serial_number + '/hour'
             }).done(function(data) {
-                console.log(data);
                 $("#chart").shieldChart({
                     theme: "light",
                     seriesSettings: {
@@ -77,10 +76,6 @@
                 let time = moment();
                 let lastOnline = moment(data.last_online);
                 online = moment.duration(time.diff(lastOnline));
-                console.log('Сейчас h: ' + data.last_meteo_data.humidity);
-                console.log('Был h: ' + last_humidity);
-                console.log('Сейчас t: ' + data.last_meteo_data.temperature);
-                console.log('Был: t' + last_temperature);
                 if (last_humidity != data.last_meteo_data.humidity || last_temperature != data.last_meteo_data.temperature){
                     getGraphData();
                 }
